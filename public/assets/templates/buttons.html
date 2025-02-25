@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Example</title>
+    <link rel="stylesheet" href="../css/salabahter.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>/* Reset default browser styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            background-color: #f0f0f0;
+        }
+        
+        /* Container styling */
+        .container {
+            text-align: center;
+        }
+        
+        /* Button container styling */
+        .button-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        /* Button styling */
+        .color-button {
+            border: none;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .color-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .color-button:active {
+            background-color: #000;
+        }
+        
+        /* Copy message styling */
+        .copy-message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+                /* Toast message styles */
+        .toast {
+        visibility: hidden;
+        min-width: 250px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 5px;
+        position: fixed;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        /* Show the toast */
+        .toast.show {
+        visibility: visible;
+        opacity: 1;
+        }
+
+        </style>
+</head>
+<body>
+    <div class="container" style="margin-bottom:250px;">
+        <h1 class="mt-5">Color Buttons</h1>
+        
+        <div class="button-container">
+            <button class="color-button" style="background-color: #74008E;" onclick="copyColor('#74008E')">#74008E</button>
+            <button class="color-button" style="background-color: #8C09AA;" onclick="copyColor('#8C09AA')">#8C09AA</button>
+            <button class="color-button" style="background-color: #AD00D4;" onclick="copyColor('#AD00D4')">#AD00D4</button>
+        </div>
+
+        <div class="button-container">
+            <button class="color-button" style="background-color: #7A1CAC;" onclick="copyColor('#7A1CAC')">#810CA8</button>
+            <button class="color-button" style="background-color: #C147E9;" onclick="copyColor('#C147E9')">#C147E9</button>
+            <button class="color-button" style="background-color: #E5B8F4;" onclick="copyColor('#E5B8F4')">#E5B8F4</button>
+        </div>
+        
+        <div id="copy-message" class="copy-message"></div>
+
+        <h1 class="mt-4">Buttons</h1>
+
+        <div class="row mt-1 d-flex justify-content-center">
+
+
+            <div class="col-4">
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                     <span class="mb-2">Primary button</span><button class="btn btn-primary" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Primary outline button</span><button class="btn btn-outline-primary" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+                
+            </div>
+            <div class="col-4">
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Secondary button</span><button class="btn btn-secondary" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Secondary outline button</span><button class="btn btn-outline-secondary" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="toast" class="toast">Button design copied!</div>
+
+        <div class="row mb-5 d-flex justify-content-center">
+
+            <div class="col-4">
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Success button</span><button class="btn btn-success" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Success outline button</span><button class="btn btn-outline-success" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Danger button</span><button class="btn btn-danger" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Danger outline button</span><button class="btn btn-outline-danger" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Info button</span><button class="btn btn-info" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Info outline button</span><button class="btn btn-outline-info" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Light  button</span><button class="btn btn-light" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Light outline button</span><button class="btn btn-outline-light" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Warning button</span><button class="btn btn-warning" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Warning outline button</span><button class="btn btn-outline-warning" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Dark  button</span><button class="btn btn-dark" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+
+                <div class="m-3 d-flex flex-column justify-content-center">
+
+                    <span class="mb-2">Dark outline button</span><button class="btn btn-outline-dark" onclick='copyDesign(this)'>Copy design</button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <h1 class="mt-2">Bagdes</h1>
+
+
+        <div class="row d-flex justify-content-center">
+            
+                <span class="badge badge-primary m-2 p-2 tx-15">Primary</span>
+                <span class="badge badge-secondary m-2 p-2 tx-15">Secondary</span>
+                <span class="badge badge-success m-2 p-2 tx-15">Success</span>
+                <span class="badge badge-danger m-2 p-2 tx-15">Danger</span>
+                <span class="badge badge-warning m-2 p-2 tx-15">Warning</span>
+                <span class="badge badge-info m-2 p-2 tx-15">Info</span>
+                <span class="badge badge-light m-2 p-2 tx-15">Light</span>
+                <span class="badge badge-dark m-2 p-2 tx-15">Dark</span>
+              
+        </div>
+
+    </div>
+
+
+    <script>
+            $(document).ready(function() {
+        function copyColor(colorCode) {
+            navigator.clipboard.writeText(colorCode).then(() => {
+                const message = document.getElementById('copy-message');
+                message.textContent = `Copied ${colorCode} to clipboard!`;
+                setTimeout(() => {
+                    message.textContent = '';
+                }, 2000);
+            });
+        }
+
+        function copyDesign(design) {
+            // Clone the design to avoid modifying the original
+            const designClone = design.cloneNode(true);
+
+            // Remove the onclick attribute from the cloned design
+            designClone.removeAttribute('onclick');
+
+            // Get the outer HTML of the cloned design
+            const designHTML = designClone.outerHTML;
+
+            navigator.clipboard.writeText(designHTML).then(() => {
+                showToast("Design design copied!");
+                }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.textContent = message;
+            toast.classList.add("show");
+
+            // Set a new timeout to hide the toast
+            toastTimeout = setTimeout(() => {
+            toast.classList.remove("show");
+            }, 3000);
+        }
+
+    
+            let toastTimeout;
+
+            $('.badge').on('click', function() {
+                const badgeHTML = $(this).clone().removeAttr('style').prop('outerHTML');
+
+                // Copy the badge's HTML to the clipboard
+                navigator.clipboard.writeText(badgeHTML).then(() => {
+                    showToast("Badge design copied!");
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

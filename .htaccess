@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Isključite preusmjeravanje za javne datoteke u /public/
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteRule ^ - [L]
+
+    # Ako tražena datoteka ili direktorij postoji, ne preusmjeravajte
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Preusmjerite sve ostale zahtjeve na index.php
+    RewriteRule ^(.*)$ /index.php?$1 [L,QSA]
+</IfModule>

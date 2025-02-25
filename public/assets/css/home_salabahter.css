@@ -1,0 +1,81 @@
+
+
+body {
+    padding-top: 4rem;
+    
+    /* Kompenzacija za fiksirani header important*/
+}
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+  
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.carousel-caption h2 {
+    font-size: 3rem; /* Možeš prilagoditi veličinu teksta */
+    font-weight: bold;
+    color: white;
+}
+
+
+  p.small {
+    font-size: 0.875rem;
+    color: white;
+  }
+  
+  h2 {
+    color: white;
+  }
+  
+  .lead {
+    color: white;
+  }
+  .instructor-row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enables horizontal scroll */
+    padding: 10px;
+}
+
+.instructor-item {
+    flex: 0 0 auto;
+    width: 20%; /* Default for larger screens (laptop) */
+    padding: 10px;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: auto;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablet - show 3 instructors */
+@media (max-width: 991px) {
+    .instructor-item {
+        width: 33.33%;
+    }
+}
+
+/* Mobile - show 1 instructor */
+@media (max-width: 768px) {
+    .instructor-item {
+        width: 100%;
+    }
+}
+
